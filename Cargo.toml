@@ -1,0 +1,7 @@
+[package]
+name = "mehedi-hasan" # Replace space with hyphen or underscore
+version = "0.1.0"
+authors = ["Mehedi Hasan <mehedi.hasan@sa.stud.vu.lt>"]  # Your email
+edition = "2021"
+
+[dependencies]
