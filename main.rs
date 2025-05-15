@@ -5,6 +5,7 @@ mod parser;
 mod expression;
 
 use tokenizer::tokenize;
+use parser::parse;
 use expression::parse_expression;
 
 fn main() {
@@ -14,8 +15,9 @@ fn main() {
 
     let mut input = String::new();
     io::stdin().read_line(&mut input).unwrap();
+    let input = input.trim(); // Remove trailing newline
 
-    let tokens = tokenize(&input);
+    let tokens = tokenize(input);
     println!("\nTokenized output as Rust vector:");
     println!("vec![");
     for token in &tokens {
@@ -26,12 +28,12 @@ fn main() {
     println!("\nParsed expression (if any):");
     match parse_expression(&tokens, 0) {
         Ok((expr, _)) => println!("{:#?}", expr),
-        Err(e) => eprintln!("Error: {}", e),
+        Err(e) => eprintln!("Error parsing expression: {}", e),
     }
 
     println!("\nParsed statement (if any):");
-    match parser::parse(&tokens) {
+    match parse(&tokens) {
         Ok(stmt) => println!("{:#?}", stmt),
-        Err(e) => eprintln!("Error: {}", e),
+        Err(e) => eprintln!("Error parsing statement: {}", e),
     }
 }

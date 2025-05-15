@@ -20,6 +20,8 @@ pub enum Expression {
 #[derive(Debug, Clone)]
 pub enum UnaryOperator {
     Not,
+    Asc,
+    Desc,
 }
 
 #[derive(Debug, Clone)]
